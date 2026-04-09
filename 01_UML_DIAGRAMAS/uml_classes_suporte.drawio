@@ -1,0 +1,112 @@
+<mxfile host="app.diagrams.net" modified="2026-03-30T00:00:00.000Z" agent="GitHub Copilot" version="24.7.17" type="device">
+  <diagram id="uml-suporte-editavel" name="UML Suporte Editável">
+    <mxGraphModel dx="1280" dy="760" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="livro" value="Livro&#xa;(referência do diagrama 1)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#085041;strokeColor=#5DCAA5;fontColor=#9FE1CB;align=center;spacing=10;spacingTop=8;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="255" y="20" width="170" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="livro_autor" value="«association»&#xa;Livro_Autor&#xa;--------------------&#xa;- ordemAutoria: int&#xa;- tipoContribuição: String" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#444441;strokeColor=#B4B2A9;fontColor=#D3D1C7;align=center;spacing=10;spacingTop=8;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="170" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="autor" value="Autor&#xa;--------------------&#xa;- id: int&#xa;- nome: String&#xa;- nacionalidade: String&#xa;- dataNascimento: Date&#xa;--------------------&#xa;+ getLivros(): List&#xa;+ getBiografia(): String" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0C447C;strokeColor=#85B7EB;fontColor=#B5D4F4;align=center;spacing=10;spacingTop=8;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="350" width="170" height="150" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="livro_categoria" value="«association»&#xa;Livro_Categoria&#xa;--------------------&#xa;- relevância: decimal&#xa;- dataAssociação: Date" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#444441;strokeColor=#B4B2A9;fontColor=#D3D1C7;align=center;spacing=10;spacingTop=8;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="255" y="160" width="170" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="categoria" value="Categoria&#xa;--------------------&#xa;- id: int&#xa;- nome: String&#xa;- descrição: String&#xa;- categoriaPai: Categoria&#xa;--------------------&#xa;+ getSubcategorias(): List&#xa;+ getLivros(): List&#xa;+ getCategoriaPai(): Categoria" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0C447C;strokeColor=#85B7EB;fontColor=#B5D4F4;align=center;spacing=10;spacingTop=8;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="255" y="350" width="170" height="160" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="editora" value="Editora&#xa;--------------------&#xa;- id: int&#xa;- nome: String&#xa;- cidade: String&#xa;- país: String&#xa;- anoFundação: int&#xa;--------------------&#xa;+ getLivros(): List&#xa;+ getSite(): String" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0C447C;strokeColor=#85B7EB;fontColor=#B5D4F4;align=center;spacing=10;spacingTop=8;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="470" y="160" width="170" height="160" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="historico" value="HistóricoEmprestimo&#xa;--------------------&#xa;- id: int&#xa;- emprestimoId: int&#xa;- ação: String&#xa;- dadosAntigos: JSON&#xa;- usuarioSistema: String&#xa;--------------------&#xa;+ registrarAcao(): void&#xa;+ getAuditoria(): List" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#444441;strokeColor=#B4B2A9;fontColor=#D3D1C7;align=center;spacing=10;spacingTop=8;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="470" y="380" width="170" height="160" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="nota_nm" value="Relacionamentos N:M&#xa;Livro * ------ * Autor  (via Livro_Autor)&#xa;Livro * ------ * Categoria  (via Livro_Categoria)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#444441;strokeColor=#B4B2A9;dashed=1;fontColor=#D3D1C7;align=left;spacing=8;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="590" width="370" height="72" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_livro_livroautor" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;strokeColor=#1D9E75;" edge="1" parent="1" source="livro" target="livro_autor">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_livro_livroautor_1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontSize=11;" vertex="1" connectable="0" parent="e_livro_livroautor">
+          <mxGeometry x="-0.05" y="0" relative="1" as="geometry">
+            <mxPoint x="-6" y="-10" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e_livroautor_autor" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;strokeColor=#888780;" edge="1" parent="1" source="livro_autor" target="autor">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_livroautor_autor_m" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontSize=11;" vertex="1" connectable="0" parent="e_livroautor_autor">
+          <mxGeometry x="-0.05" y="0" relative="1" as="geometry">
+            <mxPoint x="5" y="-8" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_livroautor_autor_1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontSize=11;" vertex="1" connectable="0" parent="e_livroautor_autor">
+          <mxGeometry x="0.95" y="0" relative="1" as="geometry">
+            <mxPoint x="5" y="-8" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e_livro_livrocategoria" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;strokeColor=#1D9E75;" edge="1" parent="1" source="livro" target="livro_categoria">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_livro_livrocategoria_1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontSize=11;" vertex="1" connectable="0" parent="e_livro_livrocategoria">
+          <mxGeometry x="-0.2" y="0" relative="1" as="geometry">
+            <mxPoint x="2" y="-8" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e_livrocategoria_categoria" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;strokeColor=#888780;" edge="1" parent="1" source="livro_categoria" target="categoria">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_livrocategoria_categoria_m" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontSize=11;" vertex="1" connectable="0" parent="e_livrocategoria_categoria">
+          <mxGeometry x="-0.05" y="0" relative="1" as="geometry">
+            <mxPoint x="5" y="-8" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_livrocategoria_categoria_1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontSize=11;" vertex="1" connectable="0" parent="e_livrocategoria_categoria">
+          <mxGeometry x="0.95" y="0" relative="1" as="geometry">
+            <mxPoint x="5" y="-8" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e_livro_editora" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;strokeColor=#185FA5;" edge="1" parent="1" source="livro" target="editora">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_livro_editora_label" value="*   1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontSize=11;" vertex="1" connectable="0" parent="e_livro_editora">
+          <mxGeometry x="0.52" y="0" relative="1" as="geometry">
+            <mxPoint x="0" y="-10" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e_categoria_auto" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;strokeColor=#185FA5;" edge="1" parent="1" source="categoria" target="categoria">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="430"/>
+              <mxPoint x="450" y="470"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_categoria_auto_label" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontSize=11;" vertex="1" connectable="0" parent="e_categoria_auto">
+          <mxGeometry x="0.5" y="0" relative="1" as="geometry">
+            <mxPoint x="10" y="2" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

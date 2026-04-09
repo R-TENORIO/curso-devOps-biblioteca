@@ -1,0 +1,15 @@
+# Ignore Docker Database Volume
+05_DOCKER_INFRAESTRUTURA/db_data/
+05_DOCKER_INFRAESTRUTURA/mysql_data/
+
+# Mac OS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Logs and databases
+*.log
+*.sqlite
+*.db

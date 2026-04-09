@@ -1,0 +1,82 @@
+# ============================================================
+# Docker Compose — Biblioteca Universitária Digital
+# Projeto Integrado DevOps — Anhanguera 2026
+# ============================================================
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: biblioteca_web
+    restart: unless-stopped
+    ports:
+      - "${WEB_PORT_HTTP}:80"
+      - "${WEB_PORT_HTTPS}:443"
+    volumes:
+      - ./src:/var/www/html
+      - ./logs/apache2:/var/log/apache2
+    environment:
+      - TZ=${TZ}
+      - DB_HOST=${DB_HOST}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - biblioteca_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health_check.php"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  db:
+    image: mysql:8.0
+    container_name: biblioteca_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: ${TZ}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
+    ports:
+      - "${DB_PORT}:3306"
+    networks:
+      - biblioteca_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: biblioteca_pma
+    restart: unless-stopped
+    environment:
+      PMA_HOST: ${PMA_HOST}
+      PMA_PORT: ${PMA_PORT}
+      PMA_USER: ${PMA_USER}
+      PMA_PASSWORD: ${PMA_PASSWORD}
+    ports:
+      - "${PMA_PORT_HTTP}:80"
+    depends_on:
+      - db
+    networks:
+      - biblioteca_network
+
+volumes:
+  db_data:
+    driver: local
+
+networks:
+  biblioteca_network:
+    driver: bridge
