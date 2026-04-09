@@ -62,6 +62,9 @@ O sistema é composto por classes concretas e abstratas, com pelo menos 3 métod
 | `Aluno` | `renovar()`, `getEmprestimosAtivos()`, `verificarPendencias()` |
 | `Professor` | `solicitarReserva()`, `getEmprestimosAtivos()`, `verificarPendencias()` |
 | `Emprestimo` | `renovar()`, `calcularMulta()`, `registrarDevolucao()` |
+| `Reserva` | `confirmarReserva()`, `cancelarReserva()`, `verificarValidade()` |
+| `Multa` | `calcularValor()`, `registrarPagamento()`, `verificarStatus()` |
+| `Unidade` | `adicionarAcervo()`, `transferirExemplar()`, `gerarRelatorio()` |
 
 > *Observação: Atributos declarados como privados (–), métodos públicos (+) e métodos de validação compartilhados como protegidos (#), garantindo encapsulamento conforme padrão UML/OMG (2017).*
 
@@ -88,7 +91,7 @@ Apresenta o fluxo relacional do banco de dados, evidenciando as restrições obr
 | `LIVRO_AUTOR` | `livro_id + autor_id` | `ordem_autoria`, `tipo_contribuicao` | Associativa N:M |
 
 ### 3.3 Normalização (3FN)
-Demonstração das tabelas associativas criadas para mitigar redundâncias e aplicar as exigências rigorosas da 3ª Forma Normal, com `LIVRO_AUTOR` e `LIVRO_CATEGORIA` gerenciando relações N:M.
+Demonstração das tabelas associativas criadas para mitigar redundâncias e aplicar as exigências rigorosas da 3ª Forma Normal, com `LIVRO_AUTOR` e `LIVRO_CATEGORIA` gerenciando relações N:M. Todas as tabelas do projeto estão em Terceira Forma Normal (3FN) porque não apresentam dependências transitivas, resolvendo as anomalias lógicas de atualização e exclusão.
 
 ---
 
@@ -317,6 +320,25 @@ A página web index renderizou as implementações dinâmicas através do PDO ac
 
 ![Containers Orquestrados no Docker Desktop](imagens/docker_desktop.png)  
 *Figura 7 — Visão gerencial do Docker Desktop confirmando a orquestração ativa e saudável dos 3 containers do projeto.*
+
+### 6.6 Subseção Obrigatória — README.md (Instruções de Execução)
+Conforme requisito delimitado para a Tarefa 5, o guia prático para instanciar e monitorar a infraestrutura deve compor a entrega do relatório. Segue o conteúdo oficial do descritivo de comandos:
+
+```markdown
+# README - Sistema de Biblioteca Universitária
+
+## Como construir a imagem
+docker build -t biblioteca .
+
+## Como executar o container
+docker run -d -p 8080:80 -v ${PWD}:/var/www/html biblioteca
+
+## Acessar a aplicação
+http://localhost:8080
+
+## Parar o container
+docker stop <container_id>
+```
 
 ---
 
