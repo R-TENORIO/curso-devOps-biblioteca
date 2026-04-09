@@ -9,6 +9,7 @@
 | **Disciplina** | Projeto Integrado Inovação — DevOps |
 | **Semestre** | 1º Semestre de 2026 |
 | **Local / Data** | Itapevi — São Paulo, Abril de 2026 |
+| **Acesso ao Código-Fonte** | [GitHub - curso-devops-biblioteca](https://github.com/R-TENORIO/curso-devops-biblioteca) |
 
 ---
 
@@ -345,7 +346,7 @@ docker stop <container_id>
 ## 7. CONSIDERAÇÕES FINAIS
 O desenvolvimento analítico e estruturado deste Sistema Web de Gerenciamento de Biblioteca Digital permitiu a integração prática e simultânea dos conhecimentos adquiridos ao longo do curso nas frentes de Análise Orientada a Objetos, SQL, Redes, Tolerância a Falhas e conteinerização DevOps. Dentre os maiores aprendizados consolidados durante esta empreitada, enfatizam-se não apenas os fluxos de herança, abstração relacional de dados até a 3ª Forma Normal, mas a percepção ampla da necessidade de transações lógicas seguras que impeçam estresse local em redes acadêmicas distribuídas.
 
-Como trabalhos contínuos futuros, identificam-se a evolução das API em NodeJS, controle de autenticação descentralizada (OAUTH) e a implementação de logs abertos em pipelines de CI/CD para GitHub Actions, visando amadurecer ainda mais as rotinas de Deploy do ambiente universitário. Conclui-se, portanto, que a competência atingida reflete o profissionalismo técnico exigido no cenário moderno de Engenharia de Confiabilidade (SRE) e Cultura DevOps.
+Como trabalhos contínuos futuros, identificam-se a evolução das API em NodeJS, controle de autenticação descentralizada (OAUTH) e a implementação de logs abertos em pipelines de CI/CD para GitHub Actions, visando amadurecer ainda mais as rotinas de Deploy do ambiente universitário. Todo o acervo documental e versionamento técnico pode ser devidamente inspecionado no repositório público do projeto: https://github.com/R-TENORIO/curso-devops-biblioteca. Conclui-se, portanto, que a competência atingida reflete o profissionalismo exigido no cenário moderno de Engenharia de Confiabilidade (SRE) e Cultura DevOps.
 
 ---
 
